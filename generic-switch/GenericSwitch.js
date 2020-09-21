@@ -1,4 +1,4 @@
-import { KEYCODES } from '../utils/keycodes.js';
+import { KEYCODES } from '~/utils/keycodes.js';
 
 const template = document.createElement('template');
 template.innerHTML = `

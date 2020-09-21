@@ -1,6 +1,6 @@
 import { html, fixture, expect } from '@open-wc/testing';
 import { stub } from 'sinon';
-import '../../switch.js';
+import '../index.js';
 
 describe('generic-switch', () => {
   it('a11y', async () => {

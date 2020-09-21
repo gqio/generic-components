@@ -1,5 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import '../../dialog.js';
+import '../index.js';
 import { dialog } from '../dialog.js';
 
 const defaultFixture = html`

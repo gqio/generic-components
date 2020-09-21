@@ -1,5 +1,5 @@
-import { EventTargetShim } from '../utils/EventTargetShim.js';
-import { KEYCODES } from '../utils/keycodes.js';
+import { EventTargetShim } from '~/utils/EventTargetShim.js';
+import { KEYCODES } from '~/utils/keycodes.js';
 // eslint-disable-next-line
 import './generic-dialog-overlay.js';
 

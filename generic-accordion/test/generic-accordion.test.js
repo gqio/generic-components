@@ -1,6 +1,6 @@
 import { html, fixture, expect, fixtureSync } from '@open-wc/testing';
 import { stub } from 'sinon';
-import '../../accordion.js';
+import '../index.js';
 
 const defaultFixture = html`
   <generic-accordion>

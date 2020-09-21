@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import { dialog } from './dialog.js';
-import '../web_modules/@a11y/focus-trap.js';
+import '~/web-modules/a11y/focus-trap.js';
 
 const template = document.createElement('template');
 template.innerHTML = `

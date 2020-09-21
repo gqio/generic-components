@@ -1,5 +1,5 @@
-import { BatchingElement } from '../utils/BatchingElement.js';
-import { SelectedMixin } from '../utils/SelectedMixin.js';
+import { BatchingElement } from '~/utils/BatchingElement.js';
+import { SelectedMixin } from '~/utils/SelectedMixin.js';
 
 const template = document.createElement('template');
 template.innerHTML = `

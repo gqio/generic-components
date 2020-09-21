@@ -17,24 +17,24 @@ body {
 }
 
 .nav {
-  font-family: 'Roboto Slab';
+  font-family: "Roboto Slab";
 }
 
 pre code span {
   font-family: monospace;
   font-size: 15px;
-  font-style: normal!important;
+  font-style: normal !important;
   font-weight: 400;
 }
 
 .language-markup {
-  font-size: 15px!important;
-  font-style: normal!important;
+  font-size: 15px !important;
+  font-style: normal !important;
   font-weight: 400;
 }
 
 pre {
-  background-color: #303136!important;
+  background-color: #303136 !important;
 }
 
 .app {
@@ -89,7 +89,7 @@ table.tg {
   margin-top: 20px;
   margin-bottom: 40px;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-collapse: collapse;
   border-width: 1px;
   border-color: #cecece;
@@ -101,7 +101,8 @@ generic-disclosure:not(:defined) {
   display: none;
 }
 
-table.tg td, table.tg th {
+table.tg td,
+table.tg th {
   border-width: 1px;
   border-color: #cecece;
   border-style: solid;
@@ -161,8 +162,6 @@ details {
   padding-top: 10px;
 }
 
-
-
 .nav ul li:last-child {
   border-top: solid 1px white;
   padding-top: 30px;
@@ -180,7 +179,7 @@ hr {
 .demo {
   border-radius: 5px;
   /* border: solid 1px gray; */
-  box-shadow: 0px 2px 5px 0px rgba(76,163,255,1);
+  box-shadow: 0px 2px 5px 0px rgba(76, 163, 255, 1);
 
   background-color: white;
   display: block;
@@ -209,15 +208,15 @@ hr {
 }
 
 pre code span {
-  font-size: 12px!important;
+  font-size: 12px !important;
 }
 
 pre code {
-  font-size: 12px!important;
+  font-size: 12px !important;
 }
 
 pre {
-  font-size: 12px!important;
+  font-size: 12px !important;
 }
 
 @media (max-width: 960px) {

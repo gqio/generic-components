@@ -1,4 +1,4 @@
-import { _visuallyHidden } from '../utils/visually-hidden.js';
+import { _visuallyHidden } from '~/utils/visually-hidden.js';
 
 /** For usage as constructible stylesheet  */
 export const visuallyHidden = `

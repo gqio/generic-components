@@ -1,6 +1,6 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
 import { stub } from 'sinon';
-import '../../disclosure.js';
+import '../index.js';
 
 describe('generic-disclosure', () => {
   it('a11y', async () => {
