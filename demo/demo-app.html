@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
-  <link rel="stylesheet" type="text/css" href="../../demo/demo-app.css">
+  <link rel="stylesheet" type="text/css" href="demo/demo-app.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
 
   <style>
@@ -129,7 +129,7 @@
     </main>
   </div>
   <script type="module">
-    import { dialog } from '../generic-dialog/dialog.js';
+    import { dialog } from 'generic-dialog/dialog.js';
 
     switchEl.addEventListener('checked-changed', (e) => {
       if (e.detail) {
@@ -144,13 +144,13 @@
     });
   </script>
 
-  <script type="module" src="../tabs.js"></script>
-  <script type="module" src="../accordion.js"></script>
-  <script type="module" src="../disclosure.js"></script>
-  <script type="module" src="../dialog.js"></script>
-  <script type="module" src="../skiplink.js"></script>
-  <script type="module" src="../alert.js"></script>
-  <script type="module" src="../switch.js"></script>
+  <script type="module" src="generic-tabs/index.js"></script>
+  <script type="module" src="generic-accordion/index.js"></script>
+  <script type="module" src="generic-disclosure/index.js"></script>
+  <script type="module" src="generic-dialog/index.js"></script>
+  <script type="module" src="generic-skiplink/index.js"></script>
+  <script type="module" src="generic-alert/index.js"></script>
+  <script type="module" src="generic-switch/index.js"></script>
 </body>
 
 </html>

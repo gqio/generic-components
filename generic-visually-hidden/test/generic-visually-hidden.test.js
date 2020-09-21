@@ -1,5 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing';
-import '../../visually-hidden.js';
+import '../index.js';
 
 describe('generic-visually-hidden', () => {
   it('a11y', async () => {
