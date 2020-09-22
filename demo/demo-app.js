@@ -2,7 +2,7 @@ import '../SelectedMixin-ae217ba9.js';
 import '../keycodes-7142cdc2.js';
 import '../generic-tabs/index.js';
 import '../generic-accordion/index.js';
-import '../index-2aaf9e77.js';
+import '../index-0a4e4bed.js';
 import '../generic-disclosure/index.js';
 import '../visually-hidden-42b48050.js';
 import '../generic-skiplink/index.js';
