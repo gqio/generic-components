@@ -1,7 +1,7 @@
-import { BatchingElement } from '~/utils/BatchingElement.js';
-import { SelectedMixin } from '~/utils/SelectedMixin.js';
+import { BatchingElement } from "~/utils/BatchingElement.js";
+import { SelectedMixin } from "~/utils/SelectedMixin.js";
 
-const template = document.createElement('template');
+const template = document.createElement("template");
 template.innerHTML = `
   <style>
     ::slotted(button) {
@@ -12,7 +12,7 @@ template.innerHTML = `
     :host {
       display: block;
     }
-  </style>
+  </style>s
   <slot>
   </slot>
 `;
@@ -22,15 +22,16 @@ export class GenericAccordion extends SelectedMixin(BatchingElement) {
     return {
       selectors: {
         buttons: {
-          selector: el => el.querySelectorAll('button'),
+          selector: (el) => el.querySelectorAll("button"),
           focusTarget: true,
         },
         regions: {
-          selector: el => el.querySelectorAll('generic-accordion > *:not(button)'),
+          selector: (el) =>
+            el.querySelectorAll("generic-accordion > *:not(button)"),
         },
       },
       multiDirectional: false,
-      orientation: 'vertical',
+      orientation: "vertical",
       shouldFocus: true,
       activateOnKeydown: false,
       disabled: false,
@@ -39,7 +40,7 @@ export class GenericAccordion extends SelectedMixin(BatchingElement) {
 
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
@@ -49,22 +50,25 @@ export class GenericAccordion extends SelectedMixin(BatchingElement) {
     buttons.forEach((_, i) => {
       if (i === this.selected) {
         this.requestUpdate(true);
-        buttons[i].setAttribute('selected', '');
-        buttons[i].setAttribute('aria-expanded', 'true');
-        buttons[i].setAttribute('aria-disabled', 'true');
+        buttons[i].setAttribute("selected", "");
+        buttons[i].setAttribute("aria-expanded", "true");
+        buttons[i].setAttribute("aria-disabled", "true");
         regions[i].hidden = false;
         this.value = buttons[i].textContent.trim();
       } else {
-        buttons[i].setAttribute('aria-expanded', 'false');
-        buttons[i].removeAttribute('aria-disabled');
-        buttons[i].removeAttribute('selected');
+        buttons[i].setAttribute("aria-expanded", "false");
+        buttons[i].removeAttribute("aria-disabled");
+        buttons[i].removeAttribute("selected");
         regions[i].hidden = true;
       }
 
-      if (!buttons[i].id.startsWith('generic-accordion-')) {
+      if (!buttons[i].id.startsWith("generic-accordion-")) {
         buttons[i].id = `generic-accordion-${this.__uuid}-${i}`;
-        regions[i].setAttribute('aria-labelledby', `generic-accordion-${this.__uuid}-${i}`);
-        regions[i].setAttribute('role', 'region');
+        regions[i].setAttribute(
+          "aria-labelledby",
+          `generic-accordion-${this.__uuid}-${i}`
+        );
+        regions[i].setAttribute("role", "region");
       }
     });
   }

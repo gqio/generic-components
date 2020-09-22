@@ -1,3 +1,3 @@
-import { GenericAccordion } from './GenericAccordion.js';
+import { GenericAccordion } from "./GenericAccordion.js";
 
-customElements.define('generic-accordion', GenericAccordion);
+customElements.define("generic-accordion", GenericAccordion);
