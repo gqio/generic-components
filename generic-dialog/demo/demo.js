@@ -1,5 +1,5 @@
 import '../../keycodes-7142cdc2.js';
-import { d as dialog } from '../../index-0a4e4bed.js';
+import { d as dialog } from '../../index-849026ac.js';
 
 /**
  * @license
