@@ -44,7 +44,7 @@ pre {
 .nav {
   height: calc(100vh - 80px);
   padding: 40px;
-  background-color: #2137d0;
+  background-color: rgb(255, 208, 0);
   color: white;
   flex-shrink: 0;
 }
