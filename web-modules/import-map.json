@@ -1,5 +1,0 @@
-{
-  "imports": {
-    "@a11y/focus-trap": "./@a11y/focus-trap.js"
-  }
-}

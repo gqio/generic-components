@@ -1,3 +1,3 @@
-import { GenericDialog } from './GenericDialog.js';
+import { GenericDialog } from "./GenericDialog.js";
 
-customElements.define('generic-dialog', GenericDialog);
+customElements.define("generic-dialog", GenericDialog);

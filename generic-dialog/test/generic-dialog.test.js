@@ -1,6 +1,6 @@
-import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import '../index.js';
-import { dialog } from '../dialog.js';
+import { html, fixture, expect, oneEvent } from "@open-wc/testing";
+import "../index.js";
+import { dialog } from "../dialog.js";
 
 const defaultFixture = html`
   <generic-dialog id="myDialog">
@@ -13,112 +13,119 @@ const defaultFixture = html`
   </generic-dialog>
 `;
 
-describe('generic-dialog', () => {
-  it('a11y', async () => {
+describe("generic-dialog", () => {
+  it("a11y", async () => {
     const el = await fixture(defaultFixture);
 
     await expect(el).to.be.accessible();
   });
 
-  describe('Web Component API', () => {
-    it('dialog has required role', async () => {
+  describe("Web Component API", () => {
+    it("dialog has required role", async () => {
       const el = await fixture(defaultFixture);
-      const button = el.querySelector('button');
+      const button = el.querySelector("button");
       button.click();
 
-      const dialogNode = document.body.querySelector('generic-dialog-overlay');
-      const dialogFrame = dialogNode.shadowRoot.querySelector('[part="dialog"]');
-      expect(dialogFrame.getAttribute('role')).to.equal('dialog');
+      const dialogNode = document.body.querySelector("generic-dialog-overlay");
+      const dialogFrame = dialogNode.shadowRoot.querySelector(
+        '[part="dialog"]'
+      );
+      expect(dialogFrame.getAttribute("role")).to.equal("dialog");
       el.close();
     });
 
-    it('body children get disabled/aria-hidden/inert', async () => {
+    it("body children get disabled/aria-hidden/inert", async () => {
       const el = await fixture(defaultFixture);
-      const button = el.querySelector('button');
+      const button = el.querySelector("button");
       button.click();
 
       [...document.body.children]
-        .filter(({ localName }) => localName === 'div')
-        .forEach(node => {
-          expect(node.hasAttribute('dialog-disabled')).to.equal(true);
-          expect(node.hasAttribute('aria-hidden')).to.equal(true);
-          expect(node.hasAttribute('inert')).to.equal(true);
+        .filter(({ localName }) => localName === "div")
+        .forEach((node) => {
+          expect(node.hasAttribute("dialog-disabled")).to.equal(true);
+          expect(node.hasAttribute("aria-hidden")).to.equal(true);
+          expect(node.hasAttribute("inert")).to.equal(true);
         });
 
       el.close();
     });
 
-    it('puts the content in the dialogFrame', async () => {
+    it("puts the content in the dialogFrame", async () => {
       const el = await fixture(defaultFixture);
-      const button = el.querySelector('button');
+      const button = el.querySelector("button");
       button.click();
 
-      const dialogNode = document.body.querySelector('generic-dialog-overlay');
+      const dialogNode = document.body.querySelector("generic-dialog-overlay");
 
       expect(dialogNode.innerHTML.trim()).to.equal(
         `<div>
       <h1>Im used as a web component!</h1>
       <p>dialog content</p>
       <button id="closebtn">close</button>
-    </div>`.trim(),
+    </div>`.trim()
       );
 
       el.close();
     });
 
-    it('opens the dialog', async () => {
+    it("opens the dialog", async () => {
       const el = await fixture(defaultFixture);
-      const button = el.querySelector('button');
+      const button = el.querySelector("button");
       button.click();
 
-      const dialogNode = document.body.querySelector('generic-dialog-overlay');
+      const dialogNode = document.body.querySelector("generic-dialog-overlay");
       expect(dialogNode).to.exist;
       expect(dialog.__dialogOpen).to.equal(true);
 
       el.close();
     });
 
-    it('dialog closes', async () => {
+    it("dialog closes", async () => {
       const el = await fixture(defaultFixture);
-      const button = el.querySelector('button');
+      const button = el.querySelector("button");
       button.click();
 
       el.close();
       expect(dialog.__dialogOpen).to.equal(false);
-      expect(document.body.querySelector('generic-dialog-overlay')).not.to.exist;
+      expect(document.body.querySelector("generic-dialog-overlay")).not.to
+        .exist;
     });
 
-    it('dialog closes on escape', async () => {
+    it("dialog closes on escape", async () => {
       const el = await fixture(defaultFixture);
 
-      el.setAttribute('close-on-escape', '');
-      const button = el.querySelector('button');
+      el.setAttribute("close-on-escape", "");
+      const button = el.querySelector("button");
       button.click();
 
-      document.body.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 27 }));
+      document.body.dispatchEvent(
+        new KeyboardEvent("keydown", { keyCode: 27 })
+      );
 
       expect(dialog.__dialogOpen).to.equal(false);
-      expect(document.body.querySelector('generic-dialog-overlay')).not.to.exist;
+      expect(document.body.querySelector("generic-dialog-overlay")).not.to
+        .exist;
     });
 
-    it('dialog closes on outside click', async () => {
+    it("dialog closes on outside click", async () => {
       const el = await fixture(defaultFixture);
 
-      el.setAttribute('close-on-outside-click', '');
-      const button = el.querySelector('button');
+      el.setAttribute("close-on-outside-click", "");
+      const button = el.querySelector("button");
       button.click();
 
-      document.body.querySelector('generic-dialog-overlay').click();
+      document.body.querySelector("generic-dialog-overlay").click();
 
       expect(dialog.__dialogOpen).to.equal(false);
-      expect(document.body.querySelector('generic-dialog-overlay')).not.to.exist;
+      expect(document.body.querySelector("generic-dialog-overlay")).not.to
+        .exist;
     });
 
-    it('fires an event on open', async () => {
+    it("fires an event on open", async () => {
       const el = await fixture(defaultFixture);
-      const button = el.querySelector('button');
+      const button = el.querySelector("button");
 
-      const listener = oneEvent(dialog, 'dialog-opened');
+      const listener = oneEvent(dialog, "dialog-opened");
       button.click();
       await listener;
       expect(listener).to.exist;
@@ -126,20 +133,20 @@ describe('generic-dialog', () => {
       el.close();
     });
 
-    it('fires an event on close', async () => {
+    it("fires an event on close", async () => {
       const el = await fixture(defaultFixture);
-      const button = el.querySelector('button');
+      const button = el.querySelector("button");
       button.click();
 
-      const listener = oneEvent(dialog, 'dialog-closed');
+      const listener = oneEvent(dialog, "dialog-closed");
       el.close();
       await listener;
       expect(listener).to.exist;
     });
 
-    it('resets focus to the invoker', async () => {
+    it("resets focus to the invoker", async () => {
       const el = await fixture(defaultFixture);
-      const button = el.querySelector('button');
+      const button = el.querySelector("button");
       button.click();
 
       el.close();
@@ -148,8 +155,8 @@ describe('generic-dialog', () => {
     });
   });
 
-  describe('JavaScript API', () => {
-    it('dialog has required role', async () => {
+  describe("JavaScript API", () => {
+    it("dialog has required role", async () => {
       const button = await fixture(`<button></button>`);
 
       dialog.open({
@@ -157,13 +164,15 @@ describe('generic-dialog', () => {
         content: () => {},
       });
 
-      const dialogNode = document.body.querySelector('generic-dialog-overlay');
-      const dialogFrame = dialogNode.shadowRoot.querySelector('[part="dialog"]');
-      expect(dialogFrame.getAttribute('role')).to.equal('dialog');
+      const dialogNode = document.body.querySelector("generic-dialog-overlay");
+      const dialogFrame = dialogNode.shadowRoot.querySelector(
+        '[part="dialog"]'
+      );
+      expect(dialogFrame.getAttribute("role")).to.equal("dialog");
       dialog.close();
     });
 
-    it('body children get disabled/aria-hidden/inert', async () => {
+    it("body children get disabled/aria-hidden/inert", async () => {
       const button = await fixture(`<button></button>`);
 
       dialog.open({
@@ -172,33 +181,33 @@ describe('generic-dialog', () => {
       });
 
       [...document.body.children]
-        .filter(({ localName }) => localName === 'div')
-        .forEach(node => {
-          expect(node.hasAttribute('dialog-disabled')).to.equal(true);
-          expect(node.hasAttribute('aria-hidden')).to.equal(true);
-          expect(node.hasAttribute('inert')).to.equal(true);
+        .filter(({ localName }) => localName === "div")
+        .forEach((node) => {
+          expect(node.hasAttribute("dialog-disabled")).to.equal(true);
+          expect(node.hasAttribute("aria-hidden")).to.equal(true);
+          expect(node.hasAttribute("inert")).to.equal(true);
         });
 
       dialog.close();
     });
 
-    it('puts the content in the dialogFrame', async () => {
+    it("puts the content in the dialogFrame", async () => {
       const button = await fixture(`<button></button>`);
       const content = `<h1>foo</h1>`;
 
       dialog.open({
         invokerNode: button,
-        content: node => {
+        content: (node) => {
           node.innerHTML = content; // eslint-disable-line
         },
       });
 
-      const dialogNode = document.body.querySelector('generic-dialog-overlay');
+      const dialogNode = document.body.querySelector("generic-dialog-overlay");
       expect(dialogNode.innerHTML).to.equal(content);
       dialog.close();
     });
 
-    it('opens the dialog', async () => {
+    it("opens the dialog", async () => {
       const button = await fixture(`<button></button>`);
 
       dialog.open({
@@ -206,13 +215,13 @@ describe('generic-dialog', () => {
         content: () => {},
       });
 
-      const dialogNode = document.body.querySelector('generic-dialog-overlay');
+      const dialogNode = document.body.querySelector("generic-dialog-overlay");
       expect(dialogNode).to.exist;
       expect(dialog.__dialogOpen).to.equal(true);
       dialog.close();
     });
 
-    it('dialog closes', async () => {
+    it("dialog closes", async () => {
       const button = await fixture(`<button></button>`);
 
       dialog.open({
@@ -223,10 +232,11 @@ describe('generic-dialog', () => {
 
       dialog.close();
       expect(dialog.__dialogOpen).to.equal(false);
-      expect(document.body.querySelector('generic-dialog-overlay')).not.to.exist;
+      expect(document.body.querySelector("generic-dialog-overlay")).not.to
+        .exist;
     });
 
-    it('dialog closes on escape', async () => {
+    it("dialog closes on escape", async () => {
       const button = await fixture(`<button></button>`);
 
       dialog.open({
@@ -237,10 +247,11 @@ describe('generic-dialog', () => {
 
       dialog.__onKeyDown({ keyCode: 27 });
       expect(dialog.__dialogOpen).to.equal(false);
-      expect(document.body.querySelector('generic-dialog-overlay')).not.to.exist;
+      expect(document.body.querySelector("generic-dialog-overlay")).not.to
+        .exist;
     });
 
-    it('dialog closes on outside click', async () => {
+    it("dialog closes on outside click", async () => {
       const button = await fixture(`<button></button>`);
 
       dialog.open({
@@ -249,16 +260,17 @@ describe('generic-dialog', () => {
         content: () => {},
       });
 
-      document.body.querySelector('generic-dialog-overlay').click();
+      document.body.querySelector("generic-dialog-overlay").click();
 
       expect(dialog.__dialogOpen).to.equal(false);
-      expect(document.body.querySelector('generic-dialog-overlay')).not.to.exist;
+      expect(document.body.querySelector("generic-dialog-overlay")).not.to
+        .exist;
     });
 
-    it('fires an event on open', async () => {
+    it("fires an event on open", async () => {
       const button = await fixture(`<button></button>`);
 
-      const listener = oneEvent(dialog, 'dialog-opened');
+      const listener = oneEvent(dialog, "dialog-opened");
 
       dialog.open({
         invokerNode: button,
@@ -271,7 +283,7 @@ describe('generic-dialog', () => {
       dialog.close();
     });
 
-    it('fires an event on close', async () => {
+    it("fires an event on close", async () => {
       const button = await fixture(`<button></button>`);
 
       dialog.open({
@@ -280,13 +292,13 @@ describe('generic-dialog', () => {
         content: () => {},
       });
 
-      const listener = oneEvent(dialog, 'dialog-closed');
+      const listener = oneEvent(dialog, "dialog-closed");
       dialog.close();
       await listener;
       expect(listener).to.exist;
     });
 
-    it('resets focus to the invoker', async () => {
+    it("resets focus to the invoker", async () => {
       const button = await fixture(`<button></button>`);
 
       dialog.open({

@@ -1,4 +1,6 @@
-const path = require("path");
+// const path = require("path");
+
+import * as path from "path";
 
 export const render = ({ current, collections }) => {
   const componentsPages = [];
@@ -6,8 +8,8 @@ export const render = ({ current, collections }) => {
     for (const page of collections[collectionName])
       if (page.collection !== "demo" && page.url.indexOf("demo") >= 0)
         componentsPages.push(page);
-	const relative = (url) => 
-		path.relative("/" + path.dirname(current.url),"/" + url)
+  const relative = (url) =>
+    path.relative("/" + path.dirname(current.url), "/" + url);
   return `
 <!doctype html>
 <html lang="en">

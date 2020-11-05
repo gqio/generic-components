@@ -8,7 +8,7 @@ body {
 *:focus {
   outline: 0px;
   /* border-radius: 4px; */
-  box-shadow: 0 0 0 1px blue, 0 0 0px 3px #145dce !important;
+  box-shadow: 0 0 0 1px rgb(255, 208, 0), 0 0 0px 3px #145dce !important;
   transition: box-shadow 0.1s ease-in-out;
 }
 
@@ -44,7 +44,7 @@ pre {
 .nav {
   height: calc(100vh - 80px);
   padding: 40px;
-  background-color: #2137d0;
+  background-color: rgb(255, 208, 0);
   color: white;
   flex-shrink: 0;
 }

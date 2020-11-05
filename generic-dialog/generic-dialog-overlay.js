@@ -1,8 +1,8 @@
 // eslint-disable-next-line
-import { dialog } from './dialog.js';
-import '~/web-modules/a11y/focus-trap.js';
+import { dialog } from "./dialog.js";
+import "@a11y/focus-trap";
 
-const template = document.createElement('template');
+const template = document.createElement("template");
 template.innerHTML = `
   <style>
     :host {
@@ -30,7 +30,7 @@ template.innerHTML = `
 export class GenericDialogOverlay extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     this.__onClick = this.__onClick.bind(this);
@@ -38,31 +38,31 @@ export class GenericDialogOverlay extends HTMLElement {
   }
 
   connectedCallback() {
-    if (this.hasAttribute('close-on-outside-click')) {
-      this.addEventListener('click', this.__onClick, true);
+    if (this.hasAttribute("close-on-outside-click")) {
+      this.addEventListener("click", this.__onClick, true);
     }
 
     this.dialog = this.shadowRoot.querySelector("[role='dialog']");
-    this.dialog.setAttribute('tabindex', '-1');
+    this.dialog.setAttribute("tabindex", "-1");
     this.dialog.focus();
 
-    ['click', 'blur'].forEach(event => {
+    ["click", "blur"].forEach((event) => {
       this.dialog.addEventListener(event, () => {
-        this.dialog.removeAttribute('tabindex');
+        this.dialog.removeAttribute("tabindex");
       });
     });
 
-    window.addEventListener('focusin', this.__onFocusIn);
+    window.addEventListener("focusin", this.__onFocusIn);
   }
 
   disconnectedCallback() {
-    window.removeEventListener('focusin', this.__onFocusIn);
+    window.removeEventListener("focusin", this.__onFocusIn);
   }
 
   __onFocusIn() {
     if (dialog.__dialogOpen) {
       if (!this.contains(document.activeElement)) {
-        this.dialog.setAttribute('tabindex', '-1');
+        this.dialog.setAttribute("tabindex", "-1");
         this.dialog.focus();
       }
     }
@@ -79,4 +79,4 @@ export class GenericDialogOverlay extends HTMLElement {
   }
 }
 
-customElements.define('generic-dialog-overlay', GenericDialogOverlay);
+customElements.define("generic-dialog-overlay", GenericDialogOverlay);
