@@ -6,10 +6,8 @@ template.innerHTML = `
   <style>
     ::slotted(button) {
       display: block;
-      
       width: 100%;
     }
-
     :host {
       display: block;
     }
@@ -67,4 +65,4 @@ class GenericAccordion extends SelectedMixin(BatchingElement) {
     }
 }
 
-customElements.define('generic-accordion', GenericAccordion);
+customElements.define("generic-accordion", GenericAccordion);
