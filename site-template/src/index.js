@@ -1,12 +1,12 @@
-import * as path from "path";
-import { text } from "./styles.css";
+import path from "path";
+import styles from "./styles.css";
 
 export const render = ({ current, pages }) => {
   const componentsPages = [];
   let demoPage = "";
   for (const page of pages) {
-    if (page.collection !== "demo" && page.url.indexOf("demo") >= 0)
-      componentsPages.push(page);
+    if (page.collection !== "demo" && /^generic/.test(page.url))
+      componentsPages.push({...page, collection:page.url.substring(0,page.url.indexOf('/'))});
     else if (page.url.endsWith("demo-app.html")) demoPage = page;
   }
   const relative = (url) =>
@@ -18,8 +18,8 @@ export const render = ({ current, pages }) => {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 	<meta name="Description" content="Put your description here.">
-	<style>${text}</style>
-	<script type="module" src="generic-disclosure/index.js"></script>
+	<style>${styles.toString()}</style>
+	<script type="module" src="${relative('disclosure.js')}"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
 	<script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>

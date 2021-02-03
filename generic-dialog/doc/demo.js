@@ -1,5 +1,5 @@
 import { dialog } from "../dialog.js";
-import "../index.js";
+import "../../dialog.js";
 import {
   render,
   html,

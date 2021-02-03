@@ -1,10 +1,10 @@
-import "~/generic-tabs/index.js";
-import "~/generic-accordion/index.js";
-import "~/generic-disclosure/index.js";
-import "~/generic-dialog/index.js";
-import "~/generic-skiplink/index.js";
-import "~/generic-alert/index.js";
-import "~/generic-switch/index.js";
+import "../../tabs.js";
+import "../../accordion.js";
+import "../../disclosure.js";
+import "../../dialog.js";
+import "../../skiplink.js";
+import "../../alert.js";
+import "../../switch.js";
 
 switchEl.addEventListener("checked-changed", (e) => {
   if (e.detail) {
