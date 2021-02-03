@@ -1,0 +1,97 @@
+<!--
+{
+	"layout":"/web_modules/z79nztvXc3rTwIPW5Wre/dist/index.js"
+}
+-->
+<style>
+	generic-alert:not(:defined) {
+		display: none;
+	}
+
+	generic-alert {
+		flex: 1;
+	}
+
+	.info {
+		background-color: #fff5af;
+		border: 1px solid #f7dc1b;
+		color: black;
+	}
+</style>
+<h1>generic-alert</h1>
+<a href="https://www.w3.org/TR/wai-aria-practices/#alert">WAI ARIA Practices</a>
+
+<p class="description">An alert is an element that displays a brief, important message in a way that attracts the
+	user's attention without interrupting the user's task.</p>
+<h2>API:</h2>
+<div class="demo">
+	<generic-disclosure>
+		<button slot="toggle">Slots</button>
+		<div slot="detail">
+			<table class="tg">
+				<thead>
+					<tr>
+						<th>name</th>
+						<th>description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>default</td>
+						<td>Provide a content node as lightdom</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</generic-disclosure>
+</div>
+
+<h2>Usage:</h2>
+<p>Simply drop the element in your page.</p>
+
+<div class="demo">
+	<h3>Default:</h3>
+	<details>
+		<summary>Show code</summary>
+		<pre><code class="language-markup"><script type="prism-html-markup"><generic-alert>This is an alert</generic-alert></script></code></pre>
+	</details>
+	<hr />
+	<generic-alert>
+		This is an alert
+	</generic-alert>
+</div>
+<br />
+<div class="demo">
+	<h3>Custom style:</h3>
+	<details>
+		<summary>Show code</summary>
+		<pre><code class="language-markup"><script type="prism-html-markup"><style>
+    .info {
+      background-color: #fff5af;
+      border: 1px solid #f7dc1b;
+      color: black;
+    }
+  </style>
+  <generic-alert class="info">Here is some info</generic-alert></script></code></pre>
+	</details>
+	<hr />
+	<generic-alert class="info">
+		Here is some info
+	</generic-alert>
+</div>
+<br /><br />
+
+<!-- <div id="foo"></div>
+
+      <script type="module">
+        import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
+        render(html`
+          <h2>Rendered with lit-html:</h2>
+          <p>Default:</p>
+          <div class="demo">
+            <generic-alert>Im rendered with lit-html</generic-switch>
+          </div>
+        `, foo);
+      </script>
+     -->
+<script type="module" src="../index.js"></script>

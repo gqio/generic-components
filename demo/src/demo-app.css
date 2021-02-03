@@ -17,12 +17,12 @@ body {
 *:focus {
   outline: 0;
   border-radius: 5px;
-  box-shadow: 0 0 0 3px var(--col-active)!important;
-  transition: box-shadow .1s ease-in-out;
+  box-shadow: 0 0 0 3px var(--col-active) !important;
+  transition: box-shadow 0.1s ease-in-out;
 }
 
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .app {
@@ -39,7 +39,7 @@ body {
   justify-content: center;
   height: 60px;
   background-color: var(--col-dark);
-  box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.30);
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
 .banner h1 {
@@ -83,7 +83,7 @@ body {
   flex: 1;
   border-radius: 5px;
   color: white;
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat", sans-serif;
   border: 0;
   margin: 0;
   padding: 0 15px 0 15px;
@@ -113,7 +113,7 @@ div[slot="panel"] {
 
 generic-disclosure button {
   color: white;
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat", sans-serif;
   border: 0;
   margin: 0;
   padding: 0;
@@ -129,8 +129,8 @@ generic-disclosure button {
 generic-disclosure button:focus {
   outline: 0;
   border-radius: 5px;
-  box-shadow: 0 0 0 3px var(--col-active)!important;
-  transition: box-shadow .1s ease-in-out;
+  box-shadow: 0 0 0 3px var(--col-active) !important;
+  transition: box-shadow 0.1s ease-in-out;
 }
 
 generic-disclosure button:hover {
@@ -146,7 +146,6 @@ generic-disclosure button:hover {
   display: block;
   padding: 10px 20px;
 }
-
 
 generic-dialog-overlay::part(dialog) {
   width: 400px;
@@ -191,8 +190,8 @@ generic-alert {
 
 generic-switch {
   display: flex;
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   --generic-switch-focus: var(--col-active);
 }
 
@@ -209,8 +208,8 @@ generic-skiplink::part(anchor) {
 generic-skiplink::part(anchor):focus {
   outline: 0;
   border-radius: 5px;
-  box-shadow: 0 0 0 3px var(--col-active)!important;
-  transition: box-shadow .1s ease-in-out;
+  box-shadow: 0 0 0 3px var(--col-active) !important;
+  transition: box-shadow 0.1s ease-in-out;
   left: 2px;
 }
 
@@ -223,7 +222,7 @@ generic-switch::part(track) {
   border-bottom-left-radius: 8px;
 }
 
-generic-switch::part(thumb){
+generic-switch::part(thumb) {
   margin-top: -2px;
   border-radius: 50%;
   background-color: var(--switch-thumb);
@@ -238,8 +237,8 @@ generic-switch[checked]::part(thumb) {
 generic-switch::part(button):focus {
   outline: 0;
   border-radius: 5px;
-  box-shadow: 0 0 0 3px var(--col-active)!important;
-  transition: box-shadow .1s ease-in-out;
+  box-shadow: 0 0 0 3px var(--col-active) !important;
+  transition: box-shadow 0.1s ease-in-out;
 }
 /*
 generic-switch::part(label) {
@@ -253,7 +252,7 @@ generic-accordion {
 generic-accordion button {
   font-weight: 700;
   font-size: 16px;
-  color:black;
+  color: black;
 
   border-radius: 5px;
   border: 0;
@@ -266,7 +265,8 @@ generic-accordion button {
   margin-bottom: 5px;
 }
 
-generic-accordion button:hover, generic-accordion button:focus {
+generic-accordion button:hover,
+generic-accordion button:focus {
   background-color: #768ad4;
 }
 
@@ -294,7 +294,6 @@ generic-accordion a {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-
 
 @media (max-width: 768px) {
   .app {

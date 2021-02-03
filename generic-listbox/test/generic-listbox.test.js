@@ -1,226 +1,226 @@
-import { html, fixture, expect, fixtureSync } from '@open-wc/testing';
-import { stub } from 'sinon';
-import '../../listbox.js';
+// import { html, fixture, expect, fixtureSync } from '@open-wc/testing';
+// import { stub } from 'sinon';
+// import '../index.js';
 
-const defaultFixture = html`
-  <generic-listbox label="list of items">
-    <ul>
-      <li>item 1</li>
-      <li>item 2</li>
-      <li>item 3</li>
-      <li>item 4</li>
-      <li>item 5</li>
-      <li>item 6</li>
-      <li>item 7</li>
-      <li>item 8</li>
-      <li>item 9</li>
-      <li>item 10</li>
-      <li>item 11</li>
-      <li>item 12</li>
-      <li>item 13</li>
-      <li>item 14</li>
-      <li>item 15</li>
-      <li>item 16</li>
-      <li>item 17</li>
-    </ul>
-  </generic-listbox>
-`;
+// const defaultFixture = html`
+//   <generic-listbox label="list of items">
+//     <ul>
+//       <li>item 1</li>
+//       <li>item 2</li>
+//       <li>item 3</li>
+//       <li>item 4</li>
+//       <li>item 5</li>
+//       <li>item 6</li>
+//       <li>item 7</li>
+//       <li>item 8</li>
+//       <li>item 9</li>
+//       <li>item 10</li>
+//       <li>item 11</li>
+//       <li>item 12</li>
+//       <li>item 13</li>
+//       <li>item 14</li>
+//       <li>item 15</li>
+//       <li>item 16</li>
+//       <li>item 17</li>
+//     </ul>
+//   </generic-listbox>
+// `;
 
-describe('generic-listbox', () => {
-  it('a11y', async () => {
-    const el = await fixture(defaultFixture);
+// describe('generic-listbox', () => {
+//   it('a11y', async () => {
+//     const el = await fixture(defaultFixture);
 
-    await expect(el).to.be.accessible();
-  });
+//     await expect(el).to.be.accessible();
+//   });
 
-  it('has the required aria attributes', async () => {
-    const el = await fixture(defaultFixture);
+//   it('has the required aria attributes', async () => {
+//     const el = await fixture(defaultFixture);
 
-    const ul = el.querySelector('ul');
-    const firstLi = el.querySelectorAll('li')[0];
-    const secondLi = el.querySelectorAll('li')[1];
+//     const ul = el.querySelector('ul');
+//     const firstLi = el.querySelectorAll('li')[0];
+//     const secondLi = el.querySelectorAll('li')[1];
 
-    // ul
-    expect(ul.getAttribute('role')).to.equal('listbox');
-    expect(ul.getAttribute('tabindex')).to.equal('0');
-    expect(ul.getAttribute('aria-label')).to.equal('list of items');
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1-0');
+//     // ul
+//     expect(ul.getAttribute('role')).to.equal('listbox');
+//     expect(ul.getAttribute('tabindex')).to.equal('0');
+//     expect(ul.getAttribute('aria-label')).to.equal('list of items');
+//     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1-0');
 
-    // 1st list item
-    expect(firstLi.id).to.equal('generic-listbox-1-0');
-    expect(firstLi.getAttribute('role')).to.equal('option');
-    expect(firstLi.getAttribute('aria-selected')).to.equal('true');
-    expect(firstLi.hasAttribute('selected')).to.equal(true);
+//     // 1st list item
+//     expect(firstLi.id).to.equal('generic-listbox-1-0');
+//     expect(firstLi.getAttribute('role')).to.equal('option');
+//     expect(firstLi.getAttribute('aria-selected')).to.equal('true');
+//     expect(firstLi.hasAttribute('selected')).to.equal(true);
 
-    // 2nd list item
-    expect(secondLi.id).to.equal('generic-listbox-1-1');
-    expect(secondLi.getAttribute('role')).to.equal('option');
-    expect(secondLi.hasAttribute('aria-selected')).to.equal(false);
-    expect(secondLi.hasAttribute('selected')).to.equal(false);
-  });
+//     // 2nd list item
+//     expect(secondLi.id).to.equal('generic-listbox-1-1');
+//     expect(secondLi.getAttribute('role')).to.equal('option');
+//     expect(secondLi.hasAttribute('aria-selected')).to.equal(false);
+//     expect(secondLi.hasAttribute('selected')).to.equal(false);
+//   });
 
-  it('changes selected on click', async () => {
-    const el = await fixture(defaultFixture);
+//   it('changes selected on click', async () => {
+//     const el = await fixture(defaultFixture);
 
-    const ul = el.querySelector('ul');
-    const firstLi = el.querySelectorAll('li')[1];
+//     const ul = el.querySelector('ul');
+//     const firstLi = el.querySelectorAll('li')[1];
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-2-0');
-    expect(firstLi.hasAttribute('aria-selected')).to.equal(false);
-    expect(firstLi.hasAttribute('selected')).to.equal(false);
+//     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-2-0');
+//     expect(firstLi.hasAttribute('aria-selected')).to.equal(false);
+//     expect(firstLi.hasAttribute('selected')).to.equal(false);
 
-    firstLi.click();
-    await el.updateComplete;
+//     firstLi.click();
+//     await el.updateComplete;
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-2-1');
-    expect(firstLi.getAttribute('aria-selected')).to.equal('true');
-    expect(firstLi.hasAttribute('selected')).to.equal(true);
-  });
+//     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-2-1');
+//     expect(firstLi.getAttribute('aria-selected')).to.equal('true');
+//     expect(firstLi.hasAttribute('selected')).to.equal(true);
+//   });
 
-  it('changes selected on click', async () => {
-    const el = await fixture(defaultFixture);
+//   it('changes selected on click', async () => {
+//     const el = await fixture(defaultFixture);
 
-    const ul = el.querySelector('ul');
-    const listItems = el.querySelectorAll('li');
+//     const ul = el.querySelector('ul');
+//     const listItems = el.querySelectorAll('li');
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-3-0');
-    expect(listItems[1].hasAttribute('aria-selected')).to.equal(false);
-    expect(listItems[1].hasAttribute('selected')).to.equal(false);
+//     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-3-0');
+//     expect(listItems[1].hasAttribute('aria-selected')).to.equal(false);
+//     expect(listItems[1].hasAttribute('selected')).to.equal(false);
 
-    listItems[1].click();
-    await el.updateComplete;
+//     listItems[1].click();
+//     await el.updateComplete;
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-3-1');
-    expect(listItems[1].getAttribute('aria-selected')).to.equal('true');
-    expect(listItems[1].hasAttribute('selected')).to.equal(true);
+//     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-3-1');
+//     expect(listItems[1].getAttribute('aria-selected')).to.equal('true');
+//     expect(listItems[1].hasAttribute('selected')).to.equal(true);
 
-    // still works after moving element around in the dom
-    const wrapper = await fixture(
-      html`
-        <div></div>
-      `,
-    );
-    wrapper.appendChild(el);
+//     // still works after moving element around in the dom
+//     const wrapper = await fixture(
+//       html`
+//         <div></div>
+//       `,
+//     );
+//     wrapper.appendChild(el);
 
-    listItems[2].click();
-    await el.updateComplete;
+//     listItems[2].click();
+//     await el.updateComplete;
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-3-2');
-    expect(listItems[2].getAttribute('aria-selected')).to.equal('true');
-    expect(listItems[2].hasAttribute('selected')).to.equal(true);
-  });
+//     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-3-2');
+//     expect(listItems[2].getAttribute('aria-selected')).to.equal('true');
+//     expect(listItems[2].hasAttribute('selected')).to.equal(true);
+//   });
 
-  it('reacts to selected property changed', async () => {
-    const el = await fixture(defaultFixture);
+//   it('reacts to selected property changed', async () => {
+//     const el = await fixture(defaultFixture);
 
-    const ul = el.querySelector('ul');
-    const firstLi = el.querySelectorAll('li')[1];
+//     const ul = el.querySelector('ul');
+//     const firstLi = el.querySelectorAll('li')[1];
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-4-0');
-    expect(firstLi.hasAttribute('aria-selected')).to.equal(false);
-    expect(firstLi.hasAttribute('selected')).to.equal(false);
+//     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-4-0');
+//     expect(firstLi.hasAttribute('aria-selected')).to.equal(false);
+//     expect(firstLi.hasAttribute('selected')).to.equal(false);
 
-    el.selected = 1;
-    await el.updateComplete;
+//     el.selected = 1;
+//     await el.updateComplete;
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-4-1');
-    expect(firstLi.getAttribute('aria-selected')).to.equal('true');
-    expect(firstLi.hasAttribute('selected')).to.equal(true);
-  });
+//     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-4-1');
+//     expect(firstLi.getAttribute('aria-selected')).to.equal('true');
+//     expect(firstLi.hasAttribute('selected')).to.equal(true);
+//   });
 
-  // @TODO: do I expect listbox to fire an event on keydown?
+//   // @TODO: do I expect listbox to fire an event on keydown?
 
-  describe('keycodes', () => {
-    it('up', async () => {
-      const el = await fixture(defaultFixture);
-      const ul = el.querySelector('ul');
-      const li = el.querySelectorAll('li');
+//   describe('keycodes', () => {
+//     it('up', async () => {
+//       const el = await fixture(defaultFixture);
+//       const ul = el.querySelector('ul');
+//       const li = el.querySelectorAll('li');
 
-      el.__onKeyDown({ preventDefault: () => {}, keyCode: 38, target: { localName: 'ul' } });
-      await el.updateComplete;
+//       el.__onKeyDown({ preventDefault: () => {}, keyCode: 38, target: { localName: 'ul' } });
+//       await el.updateComplete;
 
-      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-5-16');
-      expect(li[16].getAttribute('aria-selected')).to.equal('true');
-      expect(li[16].hasAttribute('selected')).to.equal(true);
-    });
+//       expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-5-16');
+//       expect(li[16].getAttribute('aria-selected')).to.equal('true');
+//       expect(li[16].hasAttribute('selected')).to.equal(true);
+//     });
 
-    it('down', async () => {
-      const el = await fixture(defaultFixture);
-      const ul = el.querySelector('ul');
-      const li = el.querySelectorAll('li');
+//     it('down', async () => {
+//       const el = await fixture(defaultFixture);
+//       const ul = el.querySelector('ul');
+//       const li = el.querySelectorAll('li');
 
-      el.__onKeyDown({ preventDefault: () => {}, keyCode: 40, target: { localName: 'ul' } });
-      await el.updateComplete;
+//       el.__onKeyDown({ preventDefault: () => {}, keyCode: 40, target: { localName: 'ul' } });
+//       await el.updateComplete;
 
-      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-6-1');
-      expect(li[1].getAttribute('aria-selected')).to.equal('true');
-      expect(li[1].hasAttribute('selected')).to.equal(true);
-    });
+//       expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-6-1');
+//       expect(li[1].getAttribute('aria-selected')).to.equal('true');
+//       expect(li[1].hasAttribute('selected')).to.equal(true);
+//     });
 
-    it('end and home', async () => {
-      const el = await fixture(defaultFixture);
-      const ul = el.querySelector('ul');
-      const li = el.querySelectorAll('li');
+//     it('end and home', async () => {
+//       const el = await fixture(defaultFixture);
+//       const ul = el.querySelector('ul');
+//       const li = el.querySelectorAll('li');
 
-      el.__onKeyDown({ preventDefault: () => {}, keyCode: 35, target: { localName: 'ul' } });
-      await el.updateComplete;
+//       el.__onKeyDown({ preventDefault: () => {}, keyCode: 35, target: { localName: 'ul' } });
+//       await el.updateComplete;
 
-      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-7-16');
-      expect(li[16].getAttribute('aria-selected')).to.equal('true');
-      expect(li[16].hasAttribute('selected')).to.equal(true);
+//       expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-7-16');
+//       expect(li[16].getAttribute('aria-selected')).to.equal('true');
+//       expect(li[16].hasAttribute('selected')).to.equal(true);
 
-      el.__onKeyDown({ preventDefault: () => {}, keyCode: 36, target: { localName: 'ul' } });
-      await el.updateComplete;
+//       el.__onKeyDown({ preventDefault: () => {}, keyCode: 36, target: { localName: 'ul' } });
+//       await el.updateComplete;
 
-      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-7-0');
-      expect(li[0].getAttribute('aria-selected')).to.equal('true');
-      expect(li[0].hasAttribute('selected')).to.equal(true);
-    });
-  });
+//       expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-7-0');
+//       expect(li[0].getAttribute('aria-selected')).to.equal('true');
+//       expect(li[0].hasAttribute('selected')).to.equal(true);
+//     });
+//   });
 
-  describe('events', () => {
-    it('doesnt dispatch on first update', async () => {
-      const el = fixtureSync(defaultFixture);
-      const dispatchStub = stub(el, '__dispatch');
-      await el.updateComplete;
-      expect(dispatchStub).callCount(0);
-      dispatchStub.restore();
-    });
+//   describe('events', () => {
+//     it('doesnt dispatch on first update', async () => {
+//       const el = fixtureSync(defaultFixture);
+//       const dispatchStub = stub(el, '__dispatch');
+//       await el.updateComplete;
+//       expect(dispatchStub).callCount(0);
+//       dispatchStub.restore();
+//     });
 
-    it('fires event on attr change', async () => {
-      const el = await fixture(defaultFixture);
-      const dispatchStub = stub(el, '__dispatch');
-      el.setAttribute('selected', '1');
-      await el.updateComplete;
-      expect(dispatchStub).callCount(1);
-      dispatchStub.restore();
-    });
+//     it('fires event on attr change', async () => {
+//       const el = await fixture(defaultFixture);
+//       const dispatchStub = stub(el, '__dispatch');
+//       el.setAttribute('selected', '1');
+//       await el.updateComplete;
+//       expect(dispatchStub).callCount(1);
+//       dispatchStub.restore();
+//     });
 
-    it('fires event on prop change', async () => {
-      const el = await fixture(defaultFixture);
-      const dispatchStub = stub(el, '__dispatch');
-      el.selected = 1;
-      await el.updateComplete;
-      expect(dispatchStub).callCount(1);
-      dispatchStub.restore();
-    });
+//     it('fires event on prop change', async () => {
+//       const el = await fixture(defaultFixture);
+//       const dispatchStub = stub(el, '__dispatch');
+//       el.selected = 1;
+//       await el.updateComplete;
+//       expect(dispatchStub).callCount(1);
+//       dispatchStub.restore();
+//     });
 
-    it('fires event on keydown', async () => {
-      const el = await fixture(defaultFixture);
-      const dispatchStub = stub(el, '__dispatch');
-      el.__onKeyDown({ preventDefault: () => {}, keyCode: 40 });
-      await el.updateComplete;
-      expect(dispatchStub).callCount(1);
-      dispatchStub.restore();
-    });
+//     it('fires event on keydown', async () => {
+//       const el = await fixture(defaultFixture);
+//       const dispatchStub = stub(el, '__dispatch');
+//       el.__onKeyDown({ preventDefault: () => {}, keyCode: 40 });
+//       await el.updateComplete;
+//       expect(dispatchStub).callCount(1);
+//       dispatchStub.restore();
+//     });
 
-    it('fires event on click', async () => {
-      const el = await fixture(defaultFixture);
-      const dispatchStub = stub(el, '__dispatch');
-      el.querySelectorAll('li')[1].click();
-      await el.updateComplete;
-      expect(dispatchStub).callCount(1);
-      dispatchStub.restore();
-    });
-  });
-});
+//     it('fires event on click', async () => {
+//       const el = await fixture(defaultFixture);
+//       const dispatchStub = stub(el, '__dispatch');
+//       el.querySelectorAll('li')[1].click();
+//       await el.updateComplete;
+//       expect(dispatchStub).callCount(1);
+//       dispatchStub.restore();
+//     });
+//   });
+// });

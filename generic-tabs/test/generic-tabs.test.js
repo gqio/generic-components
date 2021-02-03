@@ -143,109 +143,109 @@ describe('generic-tabs', () => {
     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
   });
 
-  it('reacts to selected property changed', async () => {
-    const el = await fixture(tabsFixture);
-    el.selected = 1;
-    await el.updateComplete;
-    const buttons = el.querySelectorAll('button');
+//   it('reacts to selected property changed', async () => {
+//     const el = await fixture(tabsFixture);
+//     el.selected = 1;
+//     await el.updateComplete;
+//     const buttons = el.querySelectorAll('button');
 
-    expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[1].hasAttribute('selected')).to.equal(true);
+//     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
+//     expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
-    expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[0].hasAttribute('selected')).to.equal(false);
-    expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
-  });
+//     expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
+//     expect(buttons[0].hasAttribute('selected')).to.equal(false);
+//     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
+//   });
 
-  it('reacts to selected attribute changed', async () => {
-    const el = await fixture(tabsFixture);
-    el.setAttribute('selected', '1');
-    await el.updateComplete;
-    const buttons = el.querySelectorAll('button');
+//   it('reacts to selected attribute changed', async () => {
+//     const el = await fixture(tabsFixture);
+//     el.setAttribute('selected', '1');
+//     await el.updateComplete;
+//     const buttons = el.querySelectorAll('button');
 
-    expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[1].hasAttribute('selected')).to.equal(true);
+//     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
+//     expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
-    expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[0].hasAttribute('selected')).to.equal(false);
-    expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
-  });
+//     expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
+//     expect(buttons[0].hasAttribute('selected')).to.equal(false);
+//     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
+//   });
 
-  it('reacts to click', async () => {
-    const el = await fixture(tabsFixture);
+//   it('reacts to click', async () => {
+//     const el = await fixture(tabsFixture);
 
-    const buttons = el.querySelectorAll('button');
+//     const buttons = el.querySelectorAll('button');
 
-    buttons[1].click();
-    await el.updateComplete;
+//     buttons[1].click();
+//     await el.updateComplete;
 
-    expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[1].hasAttribute('selected')).to.equal(true);
+//     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
+//     expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
-    expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[0].hasAttribute('selected')).to.equal(false);
-    expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
+//     expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
+//     expect(buttons[0].hasAttribute('selected')).to.equal(false);
+//     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
 
-    buttons[0].click();
-    await el.updateComplete;
+//     buttons[0].click();
+//     await el.updateComplete;
 
-    expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[0].hasAttribute('selected')).to.equal(true);
+//     expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
+//     expect(buttons[0].hasAttribute('selected')).to.equal(true);
 
-    expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[1].hasAttribute('selected')).to.equal(false);
-    expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
-  });
+//     expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
+//     expect(buttons[1].hasAttribute('selected')).to.equal(false);
+//     expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
+//   });
 
-  it('still works when moved in the dom', async () => {
-    const el = await fixture(tabsFixture);
+//   it('still works when moved in the dom', async () => {
+//     const el = await fixture(tabsFixture);
 
-    const buttons = el.querySelectorAll('button');
+//     const buttons = el.querySelectorAll('button');
 
-    buttons[1].click();
-    await el.updateComplete;
+//     buttons[1].click();
+//     await el.updateComplete;
 
-    expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[1].hasAttribute('selected')).to.equal(true);
+//     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
+//     expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
-    expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[0].hasAttribute('selected')).to.equal(false);
-    expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
+//     expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
+//     expect(buttons[0].hasAttribute('selected')).to.equal(false);
+//     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
 
-    // still works after moving element around in the dom
-    const wrapper = await fixture(
-      html`
-        <div></div>
-      `,
-    );
-    wrapper.appendChild(el);
+//     // still works after moving element around in the dom
+//     const wrapper = await fixture(
+//       html`
+//         <div></div>
+//       `,
+//     );
+//     wrapper.appendChild(el);
 
-    buttons[0].click();
-    await el.updateComplete;
+//     buttons[0].click();
+//     await el.updateComplete;
 
-    expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[0].hasAttribute('selected')).to.equal(true);
+//     expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
+//     expect(buttons[0].hasAttribute('selected')).to.equal(true);
 
-    expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[1].hasAttribute('selected')).to.equal(false);
-    expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
-  });
+//     expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
+//     expect(buttons[1].hasAttribute('selected')).to.equal(false);
+//     expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
+//   });
 
-  describe('keycodes', () => {
-    it('left', async () => {
-      const el = await fixture(tabsFixture);
-      const buttons = el.querySelectorAll('button');
+//   describe('keycodes', () => {
+//     it('left', async () => {
+//       const el = await fixture(tabsFixture);
+//       const buttons = el.querySelectorAll('button');
 
-      el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
-      await el.updateComplete;
+//       el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
+//       await el.updateComplete;
 
-      expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-      expect(buttons[1].hasAttribute('selected')).to.equal(true);
+//       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
+//       expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
-      expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-      expect(buttons[0].hasAttribute('selected')).to.equal(false);
-      expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
-    });
+//       expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
+//       expect(buttons[0].hasAttribute('selected')).to.equal(false);
+//       expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
+//     });
 
     it('double left', async () => {
       const el = await fixture(tabsFixture);
